@@ -11,16 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914233150) do
+ActiveRecord::Schema.define(version: 20160916182346) do
+
+  create_table "auctions", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.string   "image_url"
+    t.string   "image_description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "auction_id"
+    t.string   "item_name"
+    t.string   "item_description"
+    t.integer  "starting_price",    default: 0
+    t.integer  "min_bid_increment", default: 100
+    t.integer  "reserve_price",     default: 0
+    t.string   "item_location"
+    t.boolean  "sold",              default: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                      null: false
     t.string   "password_hash",                 null: false
+    t.string   "email",                         null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
     t.integer  "zip_code"
-    t.string   "email",                         null: false
     t.boolean  "admin",         default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
