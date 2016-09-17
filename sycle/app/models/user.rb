@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # users.password_hash in the database is a :string
   include BCrypt
 
+  has_many :bids
   def password
     @password ||= Password.new(password_hash)
   end
@@ -13,5 +14,5 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  
+
 end

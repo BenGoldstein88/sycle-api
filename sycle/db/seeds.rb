@@ -10,6 +10,7 @@ User.destroy_all
 Auction.destroy_all
 Listing.destroy_all
 Image.destroy_all
+Bid.destroy_all
 # admin
 tim = User.new(username: 'Tim', email: 'tim@tim.com', admin: 'true')
 tim.password = 'timtim'
@@ -20,5 +21,6 @@ tom.password = 'tomtom'
 tom.save!
 
 a = Auction.create!
-l = Listing.create!(item_name: 'test item #1', item_description: 'this be a test description, yar', auction_id: a.id, user_id: tim.id)
+l = Listing.create!(item_name: 'test item #1', item_description: 'this be a test description, yar', auction_id: a.id, user_id: tom.id)
 i = Image.create!(image_url: '../test', listing_id: l.id)
+b = Bid.create!(user_id: tim.id, listing_id: l.id)

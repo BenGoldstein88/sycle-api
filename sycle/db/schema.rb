@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916182346) do
+ActiveRecord::Schema.define(version: 20160917005656) do
 
   create_table "auctions", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "listing_id"
+    t.integer  "amount"
+    t.boolean  "current_highest_bid", default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "images", force: :cascade do |t|
