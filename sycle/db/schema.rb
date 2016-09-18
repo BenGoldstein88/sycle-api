@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 20160917005656) do
   create_table "auctions", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "current",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "bids", force: :cascade do |t|
@@ -54,16 +55,16 @@ ActiveRecord::Schema.define(version: 20160917005656) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                      null: false
-    t.string   "password_hash",                 null: false
-    t.string   "email",                         null: false
+    t.string   "username",                        null: false
+    t.string   "password_digest",                 null: false
+    t.string   "email",                           null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
     t.integer  "zip_code"
-    t.boolean  "admin",         default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

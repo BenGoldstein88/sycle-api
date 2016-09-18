@@ -2,17 +2,18 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   # users.password_hash in the database is a :string
-  include BCrypt
-
+  has_secure_password
   has_many :bids
-  def password
-    @password ||= Password.new(password_hash)
-  end
 
-  def password=(new_password)
-    @password = Password.create(new_password)
-    self.password_hash = @password
-  end
+  # include BCrypt
+  # def password
+  #   @password ||= Password.new(password_digest)
+  # end
+
+  # def password=(new_password)
+  #   @password = Password.create(new_password)
+  #   self.password_digest = @password
+  # end
 
 
 end
