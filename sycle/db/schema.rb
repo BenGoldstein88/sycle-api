@@ -41,17 +41,19 @@ ActiveRecord::Schema.define(version: 20160917005656) do
   create_table "listings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "auction_id"
+    t.integer  "current_highest_bid_id"
     t.string   "item_name"
     t.string   "item_description"
-    t.integer  "starting_price",    default: 0
-    t.integer  "min_bid_increment", default: 100
-    t.integer  "reserve_price",     default: 0
+    t.integer  "starting_price",         default: 0
+    t.integer  "min_bid_increment",      default: 100
+    t.integer  "reserve_price",          default: 0
+    t.integer  "final_price"
     t.string   "item_location"
-    t.boolean  "sold",              default: false
+    t.boolean  "sold",                   default: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "users", force: :cascade do |t|
