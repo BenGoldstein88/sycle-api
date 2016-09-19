@@ -20,7 +20,7 @@ tom = User.new(username: 'Tom', email: 'tom@tom.com')
 tom.password = 'tomtom'
 tom.save!
 
-a = Auction.create!
+a = Auction.create!(current: true)
 l = Listing.create!(item_name: 'test item #1', item_description: 'this be a test description, yar', auction_id: a.id, user_id: tom.id)
 i = Image.create!(image_url: '../test', listing_id: l.id)
 b = Bid.create!(user_id: tim.id, listing_id: l.id)

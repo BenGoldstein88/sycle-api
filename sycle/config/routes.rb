@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :listings
   resources :bids
 
-  get 'userindex', to: 'listings#userindex'
+  get 'userlistings', to: 'listings#userindex'
+  get 'currentauction', to: 'auctions#current'
   post 'authenticate', to: 'authentication#authenticate'
 
   # Example resource route with options:

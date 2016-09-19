@@ -18,4 +18,5 @@ class ListingsController < ApplicationController
 
 
 
+
 end
