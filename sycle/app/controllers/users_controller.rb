@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
+	skip_before_action :authenticate_request
 
-	# def create
-	# 	@user = User.new(params[:user])
-	# 	@user.password = params[:password]
-	# 	@user.save!
-	# end
+	def create
+		p params
+		@user = User.new(user_params)
+		@user.password = params[:password]
+		@user.save!
+
+		@result = Braintree::Customer.create(
+			# can pass in params here like first/last name
+			)
+		@user.braintree_customer_id = @result.customer.id
+		@user.save!
+
+		data = { user: @user }
+		render json: data
+	end
 
 	# def login
 	# 	@user = User.find_by_email(params[:email])
@@ -16,4 +27,10 @@ class UsersController < ApplicationController
 	# 		redirect_to home_url
 	# 	end
 	# end
+	private
+  
+	def user_params
+		params.require(:user).permit(:email, :password, :username)
+	end
+
 end

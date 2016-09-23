@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
         t.string :last_name
         t.string :address
         t.integer :zip_code
+        t.string :braintree_customer_id
         t.boolean :admin, default: false
     	t.timestamps null: false
     end

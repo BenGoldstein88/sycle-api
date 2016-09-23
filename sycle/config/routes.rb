@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'userbids', to: 'bids#userbids'
   post 'authenticate', to: 'authentication#authenticate'
 
+  get 'clienttoken', to: 'braintree#token'
   # Example resource route with options:
   #   resources :products do
   #     member do
